@@ -1,5 +1,6 @@
 import React from 'react';
-import { movies } from '../../data'; // Adjust the path accordingly
+import { movies } from '../../data';
+import MovieCard from '../../components/MovieCard/MovieCard'
 
 export default function MoviesListPage() {
   return (
