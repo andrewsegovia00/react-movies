@@ -1,19 +1,27 @@
-// import React, { useState } from 'react';
-// import { Routes, Route, Navigate } from 'react-router-dom';
-// import './App.css';
-// import LoginPage from '../../Pages/LoginPage/LoginPage';
-// import MoviesListPage from '../../Pages/MoviesListPage/MoviesListPage';
-// import MovieDetailPage from '../../Pages/MovieDetailPage/MovieDetailPage';
-// import ActorListPage from '../../Pages/ActorListPage/ActorListPage';
-// import NavBar from '../../Components/NavBar/NavBar';
-// import { movies } from "../../data.js";
+// ActorListPage.jsx
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { movies } from '../../data';
 
-export default function ActorsListPage() {
-  // const [user, setUser] = useState(null);
+export default function ActorListPage() {
+  const allActors = new Set();
+  movies.forEach((movie) => {
+    movie.cast.forEach((actor) => {
+      allActors.add(actor);
+      console.log(actor)
+    });
+  });
+  console.log(allActors)
+
+  const uniqueActors = Array.from(allActors);
 
   return (
-    <>
-    <div>ActorsPage</div>
-    </>
+    <div className="actors-list">
+      {uniqueActors.map((actor, index) => (
+        <div key={index} className="actor-card">
+          <Link to={`/actors`}>{actor}</Link>
+        </div>
+      ))}
+    </div>
   );
 }
